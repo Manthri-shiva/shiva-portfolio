@@ -1,0 +1,107 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --ink: 10 12 22;
+  --panel: 18 21 42;
+  --line: 35 40 71;
+  --mist: 139 144 179;
+  --fog: 199 202 227;
+  --paper: 243 244 252;
+  --signal: 67 229 255;
+}
+
+.light {
+  --ink: 243 244 252;
+  --panel: 255 255 255;
+  --line: 226 228 245;
+  --mist: 100 104 140;
+  --fog: 60 64 90;
+  --paper: 15 17 32;
+  --signal: 76 63 199;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: rgb(var(--ink));
+  color: rgb(var(--paper));
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+::selection {
+  background: #7C5CFF;
+  color: rgb(var(--ink));
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgb(var(--ink));
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(var(--line));
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #7C5CFF;
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #7C5CFF 0%, #43E5FF 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.text-shimmer {
+  background: linear-gradient(
+    100deg,
+    rgb(var(--paper)) 30%,
+    #43E5FF 45%,
+    #7C5CFF 55%,
+    rgb(var(--paper)) 70%
+  );
+  background-size: 250% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 6s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% center;
+  }
+
+  100% {
+    background-position: -200% center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid #43E5FF;
+  outline-offset: 4px;
+  border-radius: 4px;
+}
